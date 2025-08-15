@@ -1,0 +1,50 @@
+# https://docs.streamlit.io/library/advanced-features/configuration
+
+[global]
+
+disableWidgetStateDuplicationWarning =  false
+showWarningOnDirectExecution         =  true
+
+[logger]
+
+level                                = 'info'
+messageFormat                        = '%(asctime)s %(message)s'
+
+[client]
+
+showErrorDetails                     = 'none'
+toolbarMode                          = 'minimal'
+showSidebarNavigation                =  true
+
+[runner]
+
+magicEnabled                         =  true
+postScriptGC                         =  true
+fastReruns                           =  true
+enforceSerializableSessionState      =  false
+
+[browser]
+
+gatherUsageStats                     =  false
+
+[server]
+
+fileWatcherType                      = 'auto'
+cookieSecret                         =  false
+runOnSave                            =  true
+enableCORS                           =  true
+enableXsrfProtection                 =  true
+maxUploadSize                        =  200
+maxMessageSize                       =  200
+enableWebsocketCompression           =  false
+enableStaticServing                  =  false
+disconnectedSessionTTL               =  120
+
+[theme]
+
+base                                 = 'dark'
+primaryColor                         = '#6595EE'
+backgroundColor                      = '#000000'
+secondaryBackgroundColor             = '#111111'
+textColor                            = '#F0F0F0'
+font                                 = 'sans serif'
