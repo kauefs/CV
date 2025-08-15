@@ -1,7 +1,6 @@
 pip
 certifi
 ta
-cv2
 numpy
 pandas
 pandas_datareader
@@ -18,6 +17,7 @@ wordcloud
 folium
 scipy
 scikit-learn
+opencv-python
 tensorflow
 streamlit<1.42.0
 streamlit_folium
