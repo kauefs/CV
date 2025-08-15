@@ -1,6 +1,7 @@
 pip
 certifi
 ta
+cv2
 numpy
 pandas
 pandas_datareader
