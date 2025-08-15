@@ -18,7 +18,7 @@ folium
 pillow
 scipy
 scikit-learn
-opencv-python
+opencv-python-headless
 tensorflow
 streamlit<1.42.0
 streamlit_folium
