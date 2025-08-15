@@ -91,7 +91,7 @@ with btn2:
     if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
 with btn3:st.write('')  # spacing
 if not uploaded:
-    st.info('Use SideBar to UpLoad Image')
+    st.warning('Use SideBar to UpLoad Image')
     st.stop( )
 # LoadIMG:
 image=Image.open(uploaded).convert('RGB')
