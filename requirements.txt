@@ -23,7 +23,7 @@ tensorflow
 streamlit<1.42.0
 streamlit_folium
 streamlit_image_coordinates
-streamlit-drwable-canvas
+streamlit-drawable-canvas
 ipywidgets
 ipykernel
 jupyter
