@@ -7,7 +7,7 @@ import streamlit as   st
 from   streamlit_image_coordinates import streamlit_image_coordinates as img_coords
 from   PIL       import Image, ImageDraw, ImageFont
 from   typing    import List, Tuple
-st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide')
+st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide', initial_sidebar_state='expanded')
 st.title          (    'Document Perspective Correction')
 st.subheader      (                                  'in 4 clicks')
 # Functions:
@@ -70,8 +70,7 @@ with st.sidebar:
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
     uploaded=st.file_uploader('UpLoad Document Image (PNG/JPG)', type=['png','jpg'])
-    st .caption('Coordinates registered in the original image space. '
-                'Display may be rescaled, but points are remapped.'  )
+    st .caption('Coordinates registered in the original image space; display may be rescaled, but points are remapped.')
     st .sidebar.divider (   )
     st .sidebar.markdown('''
     ![2025.08.15   ](https://img.shields.io/badge/2025.08.15-000000)
@@ -92,7 +91,7 @@ with btn2:
     if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
 with btn3:st.write('')  # spacing
 if not uploaded:
-    st.info('UpLoad Image in SideBar.')
+    st.info('Use SideBar to UpLoad Image')
     st.stop( )
 # LoadIMG:
 image=Image.open(uploaded).convert('RGB')
