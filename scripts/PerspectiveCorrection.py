@@ -1,14 +1,14 @@
 # StreamLit PersPective Correction App:
 # https://github.com/carlosfab/vis101-fundamentos-visao/blob/main/vis102/perspective-correction/app.py
-import   io, json
-import   cv2     as   cv
-import numpy     as   np
-import streamlit as   st
+import   io,      json
+import   cv2       as   cv
+import numpy       as   np
+import streamlit   as   st
 from   streamlit_image_coordinates import streamlit_image_coordinates as img_coords
 from   PIL       import Image, ImageDraw, ImageFont
 from   typing    import List, Tuple
 st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide', initial_sidebar_state='expanded')
-st.title          (       'Image Perspective Correction')
+st.title          (    'Document Perspective Correction')
 st.subheader      (                                  'in 4 clicks')
 # Functions:
 def state( ):
@@ -38,8 +38,8 @@ def OrderQuadPoints(pts:np.ndarray)->np.ndarray:
     Classic Strategy: Sum & Difference of Coordinates.
     '''
     rect   =    np.zeros((4, 2), dtype='float32')
-    diff   =    np.diff ( pts, axis=1)  # y - x
-    s      =pts   .sum  (      axis=1)  # x + y
+    diff   =    np.diff ( pts  ,  axis=       1 )  # y - x
+    s      =pts   .sum  (         axis=       1 )  # x + y
     rect[0]=pts[np.argmin(s   )]        # TL
     rect[2]=pts[np.argmax(s   )]        # BR
     rect[1]=pts[np.argmin(diff)]        # TR
@@ -65,12 +65,19 @@ def pilToBytes(pilIMG:Image.Image, fmt='PNG')->bytes:
     return buf.getvalue   ( )
 # UI:
 state( )
+btn1,btn2,btn3=st.columns(3)
+with btn1:
+    if    st.button('↩️ UnDo' , use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.pop  ( )
+with btn2:
+    if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
+with btn3:st.write('')  # spacing
 with st.sidebar:
     st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
-    uploaded=st.file_uploader('UpLoad Image File (PNG/JPG)', type=['png','jpg'])
+    upload=st.file_uploader('UpLoad Document Image (PNG/JPG)', type=['png','jpg'])
     st .caption('Coordinates registered in the original image space; display may be rescaled, but points are remapped.')
+    if not upload:st.sidebar.warning ('No Image Loaded!')
     st .sidebar.divider (   )
     st .sidebar.markdown('''
     ![2025.08.15   ](https://img.shields.io/badge/2025.08.15-000000)
@@ -84,24 +91,18 @@ with st.sidebar:
 
     [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logoColor=0065FF&label=&copy;2025&labelColor=0065FF)](https://datavision.one/)
                         ''')
-btn1,btn2,btn3 = st.columns(3)
-with btn1:
-    if    st.button('↩️ UnDo' , use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.pop  ( )
-with btn2:
-    if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
-with btn3:st.write('')  # spacing
-if not uploaded:
+if not upload:
     st.warning('Use SideBar to UpLoad Image')
     st.stop( )
 # LoadIMG:
-image=Image.open(uploaded).convert('RGB')
+image=Image.open(upload).convert('RGB')
 origW,origH=image.size
 # Fixed Resized Exhibition to Click (No Slider):
 wDisplay=900
 displayW=min(wDisplay, origW)
 scale   =    displayW/ origW
 displayH=int(origH*scale)
-st.subheader('Click on the 4 corners of the document in any order.')
+st.subheader('1) Click on the 4 corners of the document in any order.')
 click   =img_coords(image, width=displayW, height=displayH, key='img_click_doc')
 # Click Registry (Remapped from Original Space) — Freezes After 4 Clicks:
 if click and ('x' in click  and 'y' in  click):
@@ -110,7 +111,7 @@ if click and ('x' in click  and 'y' in  click):
         origY=int(round(click['y']/scale))
         st.session_state.points.append((origX, origY))
 # OverLay PreView:
-st.subheader('Points PreView')
+st.subheader('2) Points PreView')
 overlay  =OverLay(image, st.session_state.points, poly=True)
 col1,col2=st.columns(2)
 with col1:st.image(overlay, caption=f'{len(st.session_state.points)} marked ponit(s).', use_container_width=True)
@@ -123,7 +124,7 @@ if len(st.session_state.points)==4:
     # Convert to PIL (BGR->RGB):
     warpedRGB=cv.cvtColor(warped, cv.COLOR_BGR2RGB)
     warpedIMG=Image.fromarray(warpedRGB)
-    with c2:st.image(warpedIMG, caption='Rectified Image', use_container_width=True)
+    with col2:st.image(warpedIMG, caption='Rectified Image', use_container_width=True)
     # DownLoads:
     cdl1,cdl2=st.columns(2)
     with cdl1:st.download_button('⬇️ DownLoad Rectified Image (PNG)', data=pilToBytes(warpedIMG, fmt='PNG'),
