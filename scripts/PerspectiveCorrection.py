@@ -8,7 +8,7 @@ from   streamlit_image_coordinates import streamlit_image_coordinates as img_coo
 from   PIL       import Image, ImageDraw, ImageFont
 from   typing    import List, Tuple
 st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide', initial_sidebar_state='expanded')
-st.title          (    'Document Perspective Correction')
+st.title          (       'Image Perspective Correction')
 st.subheader      (                                  'in 4 clicks')
 # Functions:
 def state( ):
@@ -17,7 +17,7 @@ def OverLay(image:Image.Image, points:List[Tuple[int,int]], poly=True)->Image.Im
     '''Draw Circles & Indices & (Optional) Polygon on the Image.'''
     img =image    .copy(   )
     draw=ImageDraw.Draw(img)
-    r   =max(3, min(img.size)//150)
+    r   =max(3 ,    min(img.size)//150)
     try   :font=ImageFont.truetype('verdana.ttf', size=max(12,r*6))
     except:font=ImageFont.load_default( )
     # Points:
@@ -75,7 +75,7 @@ with st.sidebar:
     st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
-    upload=st.file_uploader('UpLoad Document Image (PNG/JPG)', type=['png','jpg'])
+    upload=st.file_uploader('UpLoad Image File (PNG/JPG)', type=['png','jpg'])
     st .caption('Coordinates registered in the original image space; display may be rescaled, but points are remapped.')
     if not upload:st.sidebar.warning ('No Image Loaded!')
     st .sidebar.divider (   )
