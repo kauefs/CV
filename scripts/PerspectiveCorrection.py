@@ -8,7 +8,7 @@ from   streamlit_image_coordinates import streamlit_image_coordinates as img_coo
 from   PIL       import Image, ImageDraw, ImageFont
 from   typing    import List, Tuple
 st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide', initial_sidebar_state='expanded')
-st.title          (    'Document Perspective Correction')
+st.title          (       'Image Perspective Correction')
 st.subheader      (                                  'in 4 clicks')
 # Functions:
 def state( ):
@@ -69,7 +69,7 @@ with st.sidebar:
     st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
-    uploaded=st.file_uploader('UpLoad Document Image (PNG/JPG)', type=['png','jpg'])
+    uploaded=st.file_uploader('UpLoad Image File (PNG/JPG)', type=['png','jpg'])
     st .caption('Coordinates registered in the original image space; display may be rescaled, but points are remapped.')
     st .sidebar.divider (   )
     st .sidebar.markdown('''
@@ -101,7 +101,7 @@ wDisplay=900
 displayW=min(wDisplay, origW)
 scale   =    displayW/ origW
 displayH=int(origH*scale)
-st.subheader('1) Click on the 4 corners of the document in any order.')
+st.subheader('Click on the 4 corners of the document in any order.')
 click   =img_coords(image, width=displayW, height=displayH, key='img_click_doc')
 # Click Registry (Remapped from Original Space) — Freezes After 4 Clicks:
 if click and ('x' in click  and 'y' in  click):
@@ -110,7 +110,7 @@ if click and ('x' in click  and 'y' in  click):
         origY=int(round(click['y']/scale))
         st.session_state.points.append((origX, origY))
 # OverLay PreView:
-st.subheader('2) Points PreView')
+st.subheader('Points PreView')
 overlay  =OverLay(image, st.session_state.points, poly=True)
 col1,col2=st.columns(2)
 with col1:st.image(overlay, caption=f'{len(st.session_state.points)} marked ponit(s).', use_container_width=True)
