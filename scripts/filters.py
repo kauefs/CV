@@ -1,5 +1,5 @@
 import  streamlit         as   st
-import        cv2         as   cv
+import cv2                as   cv
 import      numpy         as   np
 import     pandas         as   pd
 import    seaborn         as   sns
@@ -8,30 +8,29 @@ from          PIL       import Image, ImageEnhance
 st.set_page_config(page_title='PhotoMoidal', page_icon='🎑', layout='wide', initial_sidebar_state='expanded')
 # Settings:
 pd.options.plotting.matplotlib.register_converters = True
-pd.options.display.max_columns         =             None
 plt.rcParams[  'figure.autolayout']    =             True
 plt.rcParams[    'font.family'    ]    =                                          'sans-serif'
 sns.set_theme(context='notebook', style='whitegrid', palette='colorblind',  font ='sans-serif', font_scale=1.15, color_codes=True, rc={'grid.color':'1','grid.linestyle':':'})
-FontT={'family':'sans-serif'    ,'color':'#000000', 'size': 13,    'fontweight':'semibold'  }
-FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size': 10,    'fontweight':'regular'   }
-FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size': 10,    'fontweight':'regular'   }
+FontT={'family':'sans-serif'    ,'color':'#000000', 'size': 13,      'fontweight':'semibold'  }
+FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size': 10,      'fontweight':'regular'   }
+FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size': 10,      'fontweight':'regular'   }
 OutPutWidth=500
 def state( ):
     if 'points' not in st.session_state:st.session_state.points=[]
 state    ( )
 def main ( ):
-    st.sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
+    st.sidebar.markdown('''[![sigmoidal](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
     st.sidebar.divider (   )
     st.sidebar.header  ('PhotoMoidal')
     st.sidebar.warning ('100% in Python')
     st.sidebar.caption ('Apply filters to images, using OpenCV library.')
     # Page Options
-    options    =['Filters','About']
-    choice     =st.sidebar.selectbox('Pages', options)
+    options   =['Filters','About']
+    choice    =st.sidebar.selectbox('Pages', options)
     st.sidebar.divider (   )
     st.sidebar.header  ('File UpLoad Area')
-   #image      =Image.open          ('empty.jpg')
-    image      =st.sidebar.file_uploader('UpLoad Image File (GIF/JPG/PNG)', type=['gif','png','jpg'])
+   #image     =Image.open          ('empty.jpg')
+    image     =st.sidebar.file_uploader('UpLoad Image File (GIF/JPG/PNG)', type=['gif','png','jpg'])
     # Filters:
     if choice == 'Filters':
         st.title('Computer Vision MasterClass')
@@ -48,14 +47,14 @@ def main ( ):
             st.sidebar.text('Original Image')
             st.sidebar.image(image, width=150)
         col1,col2=st.columns(2)
-        filters=st.sidebar.radio('Filters:',['Original',
-                                            'GrayScale',
-                                            'Sketch',
-                                            'Sepia',
-                                            'BrightNess',
-                                            'Contrast',
-                                            'Blur',
-                                            'Canny'])
+        filters  =st.sidebar.radio('Filters:',['Original',
+                                               'GrayScale',
+                                               'Sketch',
+                                               'Sepia',
+                                               'BrightNess',
+                                               'Contrast',
+                                               'Blur',
+                                               'Canny'])
         if   filters   =='GrayScale':
             convertedIMG=np.array(image.convert('RGB'))
             grayIMG     =cv.cvtColor(convertedIMG, cv.COLOR_RGB2GRAY)
@@ -146,4 +145,4 @@ def main ( ):
         st.success  ('Instagram @carlos_melo.py')
         st.video    ('https://www.youtube.com/watch?v=JhkhbTTxlQg')
 if __name__=='__main__':main( )
-st.toast('Loaded!', icon='✨')
+st.toast('Loaded!' , icon='🎆')
