@@ -40,13 +40,13 @@ def OrderQuadPoints(pts:np.ndarray)->np.ndarray:
     rect   =    np.zeros((4, 2), dtype='float32')
     diff   =    np.diff ( pts  ,  axis=       1 )  # y - x
     s      =pts   .sum  (         axis=       1 )  # x + y
-    rect[0]=pts[np.argmin(s   )]        # TL
-    rect[2]=pts[np.argmax(s   )]        # BR
+    rect[0]=pts[np.argmin(  s )]        # TL
+    rect[2]=pts[np.argmax(  s )]        # BR
     rect[1]=pts[np.argmin(diff)]        # TR
     rect[3]=pts[np.argmax(diff)]        # BL
     return  rect
-def WarpDocument(imageNP:np.ndarray,     pts:List[Tuple[int,int]],
-                 targetW:int=  1100, targetH: int=1600)->np.ndarray:
+def WarpDocument(imageNP: np.ndarray,     pts:List[Tuple[int,int]],
+                 targetW:int=   1100, targetH: int=1600)->np.ndarray:
     '''
     Apply Warp Perspective Based on 4 Points of the Original Image Space.
     Fixed OutPut (targetW x targetH).
