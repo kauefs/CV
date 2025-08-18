@@ -22,6 +22,7 @@ opencv-python-headless
 tensorflow
 streamlit<1.42.0
 streamlit_folium
+streamlit-bokeh
 streamlit_image_coordinates
 streamlit-drawable-canvas
 ipywidgets
