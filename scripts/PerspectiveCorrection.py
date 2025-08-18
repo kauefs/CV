@@ -18,7 +18,7 @@ def OverLay(image:Image.Image, points:List[Tuple[int,int]], poly=True)->Image.Im
     img =image    .copy(   )
     draw=ImageDraw.Draw(img)
     r   =max(3 ,    min(img.size)//150)
-    try   :font=ImageFont.truetype('verdana.ttf', size=max(12,r*6))
+    try   :font=ImageFont.truetype('verdana.ttf'  ,    size=max(12,r*6))
     except:font=ImageFont.load_default( )
     # Points:
     for idx,(x,y)in enumerate(points,start=1):
@@ -140,3 +140,4 @@ else:
                 - OutPut fixed @ 1100px × 1600px.
                 - Use **UnDo** or **Clear** to correct clicks.
                                                              ''')
+st.toast('Ready!', icon='📑')
