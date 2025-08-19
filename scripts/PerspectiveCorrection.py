@@ -67,7 +67,7 @@ def pilToBytes(pilIMG:Image.Image, fmt='PNG')->bytes:
 state( )
 btn1,btn2,btn3=st.columns(3)
 with btn1:
-    if    st.button('↩️ UnDo' , use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.pop  ( )
+    if    st.button('↩️ Undo' , use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.pop  ( )
 with btn2:
     if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
 with btn3:st.write('')  # spacing
