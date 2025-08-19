@@ -76,7 +76,8 @@ with st.sidebar:
    #st .sidebar.markdown('''[![logo](https://sigmoidal.ai/wp-content/uploads/2024/09/Academia-Sigmoidal-Light.png)''')
     st .sidebar.markdown('''
     [![academy](https://escola.sigmoidal.ai/wp-content/uploads/2024/05/Academia-Sigmoidal-1.png)](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/)
-    Processamento Digital de Imagens I
+    Digital Image Processing
+    
     by Carlos Melo''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
