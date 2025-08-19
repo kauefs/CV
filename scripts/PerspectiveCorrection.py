@@ -73,11 +73,11 @@ with btn2:
 with btn3:st.write('')  # spacing
 with st.sidebar:
    #st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
-    st .sidebar.markdown('''[![academy](https://sigmoidal.ai/wp-content/uploads/2024/09/Academia-Sigmoidal-Light.png)](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/)
-    
-                            Processamento Digital de Imagens I
-                            
-                            by Carlos Melo''')
+   #st .sidebar.markdown('''[![logo](https://sigmoidal.ai/wp-content/uploads/2024/09/Academia-Sigmoidal-Light.png)''')
+    st .sidebar.markdown('''
+    [![academy](https://escola.sigmoidal.ai/wp-content/uploads/2024/05/Academia-Sigmoidal-1.png)](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/)
+    Processamento Digital de Imagens I
+    by Carlos Melo''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
     upload=st.file_uploader('UpLoad Image File (PNG/JPG)', type=['png','jpg'])
