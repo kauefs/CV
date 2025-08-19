@@ -72,9 +72,12 @@ with btn2:
     if    st.button('🧹 Clear', use_container_width=True, disabled=len(st.session_state.points)==0):st.session_state.points.clear( )
 with btn3:st.write('')  # spacing
 with st.sidebar:
-    st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
-    st .sidebar.write   ('Processamento Digital de Imagens I')
-    st .sidebar.write   ('by Carlos Melo **@** [Sigmoidal Academy](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/).')
+   #st .sidebar.markdown('''[![logo](https://raw.githubusercontent.com/carlosfab/escola-data-science/master/img/novo_logo_bg_escuro.png)](https://sigmoidal.ai/)''')
+    st .sidebar.markdown('''[![academy](https://sigmoidal.ai/wp-content/uploads/2024/09/Academia-Sigmoidal-Light.png)](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/)
+    
+                            Processamento Digital de Imagens I
+                            
+                            by Carlos Melo''')
     st .sidebar.divider (   )
     st .header('File UpLoad Area')
     upload=st.file_uploader('UpLoad Image File (PNG/JPG)', type=['png','jpg'])
