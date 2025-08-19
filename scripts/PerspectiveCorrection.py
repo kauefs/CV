@@ -10,6 +10,7 @@ from   typing    import List, Tuple
 st.set_page_config(page_title = 'Perspective Correction (4 Points)', layout='wide', initial_sidebar_state='expanded')
 st.title          (       'Image Perspective Correction')
 st.subheader      (                                  'in 4 clicks')
+st.markdown(f'''➡️ Processamento Digital de Imagens I by Carlos Melo **@** [Sigmoidal Academy](https://escola.sigmoidal.ai/pos-graduacao-em-visao-computacional-e-deep-learning/).''')
 # Functions:
 def state( ):
     if 'points' not in st.session_state:st.session_state.points:List[Tuple[int,int]]=[]
