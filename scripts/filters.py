@@ -34,7 +34,7 @@ def main ( ):
     # Filters:
     if choice == 'Filters':
         st.title('Computer Vision MasterClass')
-        st.markdown(f'''➡️ Project from Introduction to Computer Vision MasterClass by Carlos Melo **@** [Sigmoidal](https://sigmoidal.ai/).''')
+        st.markdown(f'''➡️ Introduction to Computer Vision MasterClass by Carlos Melo **@** [Sigmoidal](https://sigmoidal.ai/).''')
         # Load & Display Image:
         # image= cv.imread(image.img)   # -> This won't work!
         st.subheader('Image Filters')
